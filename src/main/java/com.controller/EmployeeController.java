@@ -48,10 +48,19 @@ public class EmployeeController {
         return "registrationStatus";
     }
 
+    //Fetch all employees
     @GetMapping("/showEmployee")
     public String showAllEmployees(Model model){
         List<EmployeeDTO> employeeDTOList = employeeService.findAllEmployees();
         model.addAttribute("employeeDTOList", employeeDTOList);
         return "showAll";
+    }
+
+    @GetMapping("/deleteEmployee")
+    public String deleteEmployee(@RequestParam int employeeId, Model model){
+        employeeService.deleteEmployee(employeeId);
+        model.addAttribute("msg", "Record delete successfully");
+        //return "deleteEmployee";
+        return "redirect:/showEmployee";
     }
 }

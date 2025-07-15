@@ -38,7 +38,7 @@
       </tr>
     </tbody>
   </table>
-  <a href="showEmployee"> <button type="button" class=btn btn-primary">Show All Records</button></a>
+  <a href="showEmployee"> <button type="button" class="btn btn-success">Show All Records</button></a>
 </div>
 </body>
 </html>

@@ -50,10 +50,12 @@ public class EmployeeServiceImpl implements EmployeeService{
         }
     }
 
+    //fetch all records -------> findAll()
     @Override
     public List<EmployeeDTO> findAllEmployees() {
         List<EmployeeEntity> employeeEntity = employeeDao.findAll();
 
+        //now we have to copy these objects(records) to employeeDTO
         List<EmployeeDTO> employeeDTOList = new ArrayList<>();
         if(!employeeEntity.isEmpty()){
             for(EmployeeEntity tempoVar: employeeEntity){
@@ -64,4 +66,12 @@ public class EmployeeServiceImpl implements EmployeeService{
         }
         return employeeDTOList;
     }
+
+    //deleting the employee by using deleteById
+    @Override
+    public void deleteEmployee(int employeeId) {
+        employeeDao.deleteById(employeeId);
+    }
+
+
 }

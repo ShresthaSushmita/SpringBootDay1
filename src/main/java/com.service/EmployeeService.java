@@ -10,4 +10,5 @@ public interface EmployeeService {
 
     List<EmployeeDTO> findAllEmployees();
 
+    void deleteEmployee(int employeeId);
 }

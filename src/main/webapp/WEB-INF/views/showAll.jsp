@@ -13,9 +13,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+<marquee> Congratulations!! for getting all the records</marquee>
 <div class="container">
-  <form action="loginValidate" method="post">
-
   <h2>Employee Information</h2>
 
   <table class="table table-hover">
@@ -31,7 +30,7 @@
       </tr>
     </thead>
     <tbody>
-    <c:forEach var="oneObject" items="${employeeDtoList}">
+    <c:forEach var="oneObject" items="${employeeDTOList}">
       <tr  bgcolor="pink">
        <td>${oneObject.employeeId}</td>
        <td>${oneObject.employeeName}</td>
@@ -55,7 +54,6 @@
 
     </tbody>
   </table>
-  <a href="showEmployee"> <button type="button" class=btn btn-primary">show all records</button></a>
 </div>
 </body>
 </html>
