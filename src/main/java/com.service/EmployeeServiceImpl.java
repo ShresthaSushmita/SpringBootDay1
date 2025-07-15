@@ -73,5 +73,35 @@ public class EmployeeServiceImpl implements EmployeeService{
         employeeDao.deleteById(employeeId);
     }
 
+    //updating/editing the employee info
+    @Override
+    public EmployeeDTO updateEmployee(int employeeId) {
+        //optional is used to work with both null and not null
+        Optional<EmployeeEntity> optional = employeeDao.findById(employeeId);
 
+        EmployeeDTO employeeDTO = null;
+        if (optional.isPresent()) {
+            //if value is present
+            EmployeeEntity employeeEntity = optional.get();
+
+            employeeDTO = new EmployeeDTO();
+
+            BeanUtils.copyProperties(employeeEntity, employeeDTO);
+
+            return employeeDTO;    //it is having values    ---> NOT_NULL
+        } else {
+            //if value not present
+            return employeeDTO;   //it is not having value   ---> NULL
+        }
+    }
+
+    //Edit operation ---- (tier-1)  <---get record from table
+    @Override
+    public void postEmployeeInfo(EmployeeDTO employeeDTO) {
+        EmployeeEntity employeeEntity = new EmployeeEntity();
+
+        BeanUtils.copyProperties(employeeDTO, employeeEntity);
+        employeeDao.save(employeeEntity);
+
+    }
 }

@@ -56,11 +56,28 @@ public class EmployeeController {
         return "showAll";
     }
 
+    //delete operation
     @GetMapping("/deleteEmployee")
     public String deleteEmployee(@RequestParam int employeeId, Model model){
         employeeService.deleteEmployee(employeeId);
         model.addAttribute("msg", "Record delete successfully");
         //return "deleteEmployee";
+        return "redirect:/showEmployee";
+    }
+
+    //update employee info operation
+    @GetMapping("/updateEmployee")
+    public String updateEmployee(@RequestParam int employeeId, Model model){
+        EmployeeDTO employeeDTO = employeeService.updateEmployee(employeeId);
+        model.addAttribute("employeeDTO", employeeDTO);
+        return "updateEmployee";
+    }
+
+    //update employee info operation
+    @PostMapping("/employeeUpdate")
+    public String postEmployeeInfo(@ModelAttribute EmployeeDTO employeeDTO, Model model){
+        employeeService.postEmployeeInfo(employeeDTO);
+        model.addAttribute("msg", "Record update successfully");
         return "redirect:/showEmployee";
     }
 }
